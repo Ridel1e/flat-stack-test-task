@@ -32,7 +32,7 @@ export default (() => {
   }
 
   /**
-   * Register module in application controller
+   * Registers module in application controller
    * @param moduleName
    * @param creator
    */
@@ -49,7 +49,7 @@ export default (() => {
   }
 
   /**
-   * Start concrete module
+   * Starts specific module
    * @param moduleName
    */
   function start(moduleName) {
@@ -61,7 +61,7 @@ export default (() => {
         moduleData[moduleName].instance.init();
       }
       catch (e) {
-
+        console.log(e);
       }
     }
     else {
@@ -70,14 +70,14 @@ export default (() => {
   }
 
   /**
-   * Start all modules
+   * Starts all modules
    */
   function startAll() {
     Object.keys(moduleData).forEach((moduleName) => this.start(moduleName));
   }
 
   /**
-   * Stop concrete module
+   * Stops specific module
    * @param moduleName
    */
   function stop(moduleName) {
@@ -97,7 +97,7 @@ export default (() => {
   }
 
   /**
-   * Stop all modules
+   * Stops all modules
    */
   function stopAll() {
     Object.keys(moduleData).forEach((moduleName) => this.stop(moduleName));

@@ -2,16 +2,12 @@
  * Created by ridel1e on 11/09/16.
  */
 
-'use strict';
+import express from 'express';
 
-var express = require('express');
-
-var server = express();
+const server = express();
 
 server.set('port', 10000);
-server.use(express.static(__dirname));
+server.use(express.static(`${__dirname}/public`));
 
-server.listen(server.get('port'), function () {
-  console.log("server listening on port: "
-    + server.get('port'));
-});
+server.listen(server.get('port'), () =>
+  console.log(`server listening on port: ${server.get('port')} `));

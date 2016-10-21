@@ -4,4 +4,7 @@
 
 import ApplicationController from 'core/application-controller';
 
-console.log(ApplicationController);
+import testWidget from 'modules/test';
+testWidget(ApplicationController);
+
+ApplicationController.startAll();
