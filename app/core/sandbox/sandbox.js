@@ -83,22 +83,44 @@ class Sandbox {
   /**
    * Emits new event
    */
-  dispatch(eventName, data) {
-
+  emit(eventName, data) {
+    this.ApplicationController.eventEmitter.emit(eventName, data);
   }
 
   /**
-   * Subscribes module to specific event
+   * Subscribes module to specific events
    */
-  subscribe(eventName) {
-
+  subscribe(listeners) {
+    if(listeners instanceof Array) {
+      listeners.forEach((listener) =>
+        this.ApplicationController.eventEmitter
+          .subscribe(listener.eventName, listener.callback));
+    }
+    else if(listeners instanceof Object) {
+      this.ApplicationController.eventEmitter
+        .subscribe(listeners.eventName, listeners.callback);
+    }
+    else {
+      
+    }
   }
 
   /**
    * Unsubscribes module from specific event
    */
-  unsubscribe() {
+  unsubscribe(listeners) {
+    if(listeners instanceof Array) {
+      listeners.forEach((listener) =>
+        this.ApplicationController.eventEmitter
+          .unsubscribe(listener.eventName, listener.callback));
+    }
+    else if(listeners instanceof Object) {
+      this.ApplicationController.eventEmitter
+        .unsubscribe(listeners.eventName, listeners.callback);
+    }
+    else {
 
+    }
   }
 }
 

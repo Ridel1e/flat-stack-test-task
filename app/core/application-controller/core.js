@@ -61,7 +61,7 @@ export default (() => {
         moduleData[moduleName].instance.init();
       }
       catch (e) {
-        console.log(e);
+        console.error(e);
       }
     }
     else {

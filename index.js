@@ -6,7 +6,7 @@ import express from 'express';
 
 const server = express();
 
-server.set('port', 10000);
+server.set('port', 5000);
 server.use(express.static(`${__dirname}/public`));
 
 server.listen(server.get('port'), () =>

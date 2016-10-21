@@ -14,12 +14,18 @@ const widget = (sandbox) => {
     sandbox.renderTemplate('<h2>HELLO, MY FRIEND!</h2><button class="button">HELLO</button>');
     const button = sandbox.find('.button');
     sandbox.addEventListener(button, 'click', function () {
-      const newElement = sandbox.createElement('<p>New Record</p>');
+      sandbox.emit('product:add', {
+        name: 'hey',
+        desc: 'hey1'
+      });
+    });
 
-      sandbox.addEventListener(newElement, 'click', () => { sandbox.removeElement(newElement) });
-      
-      sandbox.appendElement(newElement);
-    })
+    sandbox.subscribe([{
+      eventName: 'product:add',
+      callback: function (data) {
+        console.log(data)
+      }
+    }]);
   }
 
   function destroy() {

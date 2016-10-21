@@ -7,5 +7,7 @@ import Core from './core';
 import dom from './dom';
 dom(Core);
 
+import eventEmitter from './event-emitter';
+eventEmitter(Core);
 
 export default Core;
