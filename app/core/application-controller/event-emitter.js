@@ -2,6 +2,8 @@
  * Created by ridel1e on 21/10/2016.
  */
 
+import InvalidArgumentsError from 'helpers/errors/invalid-arguments-error';
+
 const EXTENSION_NAME = 'eventEmitter';
 
 const extension = (() => {
@@ -30,7 +32,8 @@ const extension = (() => {
         .forEach((listener) => listener(data));
     }
     else {
-
+      const message = 'first argument must be a string';
+      throw new InvalidArgumentsError('emit', message);
     }
   }
 
@@ -50,7 +53,9 @@ const extension = (() => {
       events[eventName].listeners.push(callback);
     }
     else {
-
+      const message = 'first argument must be a string, ' +
+        'second argument must be a Function';
+      throw new InvalidArgumentsError('subscribe', message);
     }
   }
 
@@ -71,7 +76,9 @@ const extension = (() => {
           events[eventName].listeners.filter((listener) => listener !== callback);
     }
     else {
-
+      const message = 'first argument must be a string, ' +
+        'second argument must be a Function';
+      throw new InvalidArgumentsError('unsubscribe', message);
     }
   }
 })();

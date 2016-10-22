@@ -3,6 +3,7 @@
  */
 
 import Jquery from 'jquery';
+import InvalidArgumentsError from 'helpers/errors/invalid-arguments-error';
 
 const EXTENSION_NAME = 'dom';
 
@@ -32,7 +33,9 @@ const extension = (() => {
       return Jquery(selector);
     }
     else {
-
+      const message = 'first argument must be a string, ' +
+        'optional argument must be a Jquery Object';
+      throw new InvalidArgumentsError('find', message);
     }
   }
 
@@ -45,7 +48,9 @@ const extension = (() => {
     if(oldElement instanceof Jquery && (newElement instanceof Jquery || typeof newElement === 'string')) {
       oldElement.replaceWith(newElement);
     } else {
-      
+      const message = 'first argument must be a Jquery Object, ' +
+        'second argument must be a Jquery Object or a string';
+      throw new InvalidArgumentsError('replaceWith', message);
     }
   }
 
@@ -59,7 +64,8 @@ const extension = (() => {
       element.html(template);
     }
     else {
-
+      const message = 'first argument must be a Jquery Object, second argument must be a string';
+      throw new InvalidArgumentsError('html', message);
     }
   }
 
@@ -73,7 +79,9 @@ const extension = (() => {
       context.append(element);
     }
     else {
-
+      const message = 'first argument must be a Jquery Object or a string, ' +
+        'second argument must be a Jquery Object';
+      throw new InvalidArgumentsError('appendElement', message);
     }
   }
 
@@ -86,7 +94,8 @@ const extension = (() => {
       return Jquery(template)
     }
     else {
-
+      const message = 'first argument must be a string';
+      throw new InvalidArgumentsError('createElement', message);
     }
   }
 
@@ -99,7 +108,8 @@ const extension = (() => {
       element.remove();
     }
     else {
-
+      const message = 'first argument must be a Jquery Object';
+      throw new InvalidArgumentsError('removeElement', message);
     }
   }
 
@@ -114,7 +124,9 @@ const extension = (() => {
       element.bind(eventName, callback);
     }
     else {
-
+      const message = 'first argument must be a Jquery Object, ' +
+        'second argument must be a string, third argument must be a Function';
+      throw new InvalidArgumentsError('addEventListener', message);
     }
   }
 
@@ -129,7 +141,9 @@ const extension = (() => {
       element.unbind(eventName, callback);
     }
     else {
-
+      const message = 'first argument must be a Jquery Object, ' +
+        'second argument must be a string, third argument must be a Function';
+      throw new InvalidArgumentsError('removeEventListener', message);
     }
   }
 })();

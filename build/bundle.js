@@ -207,7 +207,7 @@
 	  var STACK_JUMP_SEPARATOR = 'From previous event:';
 
 	  function makeStackTraceLong(error, observable) {
-	    // If possible, transform the error stack trace by removing Node and RxJS
+	    // If possible, transform the errors stack trace by removing Node and RxJS
 	    // cruft, then concatenating with the stack trace of `observable`.
 	    if (hasStacks &&
 	        observable.stack &&
@@ -1884,7 +1884,7 @@
 
 	    /**
 	     * Notifies the observer that an exception has occurred.
-	     * @param {Any} error The error that has occurred.
+	     * @param {Any} error The errors that has occurred.
 	     */
 	    AbstractObserver.prototype.onError = function (error) {
 	      if (!this.isStopped) {
@@ -1950,7 +1950,7 @@
 
 	    /**
 	     * Calls the onError action.
-	     * @param {Any} error The error that has occurred.
+	     * @param {Any} error The errors that has occurred.
 	     */
 	    AnonymousObserver.prototype.error = function (error) {
 	      this._onError(error);
@@ -3426,7 +3426,7 @@
 
 	  /**
 	   * Continues an observable sequence that is terminated by an exception with the next observable sequence.
-	   * @param {Mixed} handlerOrSecond Exception handler function that returns an observable sequence given the error that occurred in the first sequence, or a second observable sequence used to produce results when an error occurred in the first sequence.
+	   * @param {Mixed} handlerOrSecond Exception handler function that returns an observable sequence given the errors that occurred in the first sequence, or a second observable sequence used to produce results when an errors occurred in the first sequence.
 	   * @returns {Observable} An observable sequence containing the first sequence's elements, followed by the elements of the handler sequence in case an exception occurred.
 	   */
 	  observableProto['catch'] = function (handlerOrSecond) {
@@ -3435,7 +3435,7 @@
 
 	  /**
 	   * Continues an observable sequence that is terminated by an exception with the next observable sequence.
-	   * @param {Array | Arguments} args Arguments or an array to use as the next sequence if an error occurs.
+	   * @param {Array | Arguments} args Arguments or an array to use as the next sequence if an errors occurs.
 	   * @returns {Observable} An observable sequence containing elements from consecutive source sequences until a source sequence terminates successfully.
 	   */
 	  var observableCatch = Observable['catch'] = function () {
@@ -3926,11 +3926,11 @@
 	  /**
 	  * Flattens an Observable that emits Observables into one Observable, in a way that allows an Observer to
 	  * receive all successfully emitted items from all of the source Observables without being interrupted by
-	  * an error notification from one of them.
+	  * an errors notification from one of them.
 	  *
 	  * This behaves like Observable.prototype.mergeAll except that if any of the merged Observables notify of an
-	  * error via the Observer's onError, mergeDelayError will refrain from propagating that
-	  * error notification until all of the merged Observables have finished emitting items.
+	  * errors via the Observer's onError, mergeDelayError will refrain from propagating that
+	  * errors notification until all of the merged Observables have finished emitting items.
 	  * @param {Array | Arguments} args Arguments or an array to merge.
 	  * @returns {Observable} an Observable that emits all of the items emitted by the Observables emitted by the Observable
 	  */
@@ -4892,7 +4892,7 @@
 
 	  /**
 	   *  Repeats the source observable sequence the specified number of times or until it successfully terminates. If the retry count is not specified, it retries indefinitely.
-	   *  Note if you encounter an error and want it to retry once, then you must use .retry(2);
+	   *  Note if you encounter an errors and want it to retry once, then you must use .retry(2);
 	   *
 	   * @example
 	   *  var res = retried = retry.repeat();
@@ -5412,7 +5412,7 @@
 	  /**
 	   * Projects each notification of an observable sequence to an observable sequence and concats the resulting observable sequences into one observable sequence.
 	   * @param {Function} onNext A transform function to apply to each element; the second parameter of the function represents the index of the source element.
-	   * @param {Function} onError A transform function to apply when an error occurs in the source sequence.
+	   * @param {Function} onError A transform function to apply when an errors occurs in the source sequence.
 	   * @param {Function} onCompleted A transform function to apply when the end of the source sequence is reached.
 	   * @param {Any} [thisArg] An optional "this" to use to invoke each transform.
 	   * @returns {Observable} An observable sequence whose elements are the result of invoking the one-to-many transform function corresponding to each notification in the input sequence.
@@ -5780,7 +5780,7 @@
 	  /**
 	   * Projects each notification of an observable sequence to an observable sequence and merges the resulting observable sequences into one observable sequence.
 	   * @param {Function} onNext A transform function to apply to each element; the second parameter of the function represents the index of the source element.
-	   * @param {Function} onError A transform function to apply when an error occurs in the source sequence.
+	   * @param {Function} onError A transform function to apply when an errors occurs in the source sequence.
 	   * @param {Function} onCompleted A transform function to apply when the end of the source sequence is reached.
 	   * @param {Any} [thisArg] An optional "this" to use to invoke each transform.
 	   * @returns {Observable} An observable sequence whose elements are the result of invoking the one-to-many transform function corresponding to each notification in the input sequence.
@@ -7652,7 +7652,7 @@
 	 * Converts a Node.js callback style function to an observable sequence.  This must be in function (err, ...) format.
 	 * @param {Function} fn The function to call
 	 * @param {Mixed} [ctx] The context for the func parameter to be executed.  If not specified, defaults to undefined.
-	 * @param {Function} [selector] A selector which takes the arguments from the callback minus the error to produce a single item to yield on next.
+	 * @param {Function} [selector] A selector which takes the arguments from the callback minus the errors to produce a single item to yield on next.
 	 * @returns {Function} An async function which when applied, returns an observable sequence with the callback arguments as an array.
 	 */
 	Observable.fromNodeCallback = function (fn, ctx, selector) {
@@ -8967,7 +8967,7 @@
 	   * The first will trigger observations for those values for which the predicate returns true.
 	   * The second will trigger observations for those values where the predicate returns false.
 	   * The predicate is executed once for each subscribed observer.
-	   * Both also propagate all error observations arising from the source and each completes
+	   * Both also propagate all errors observations arising from the source and each completes
 	   * when the source completes.
 	   * @param {Function} predicate
 	   *    The function to determine which output Observable will trigger a particular observation.
@@ -10934,7 +10934,7 @@
 	   *  This is a side-effect of the asynchrony introduced by the scheduler, where the action that causes callbacks from the source sequence to be forwarded
 	   *  may not execute immediately, despite the zero due time.
 	   *
-	   *  Errors produced by the source sequence are always forwarded to the result sequence, even if the error occurs before the duration.
+	   *  Errors produced by the source sequence are always forwarded to the result sequence, even if the errors occurs before the duration.
 	   * @param {Number} duration Duration for skipping elements from the start of the sequence.
 	   * @param {Scheduler} scheduler Scheduler to run the timer on. If not specified, defaults to Rx.Scheduler.timeout.
 	   * @returns {Observable} An observable sequence with the elements skipped during the specified duration from the start of the source sequence.
@@ -10987,7 +10987,7 @@
 
 	  /**
 	   *  Skips elements from the observable source sequence until the specified start time, using the specified scheduler to run timers.
-	   *  Errors produced by the source sequence are always forwarded to the result sequence, even if the error occurs before the start time.
+	   *  Errors produced by the source sequence are always forwarded to the result sequence, even if the errors occurs before the start time.
 	   *
 	   * @examples
 	   *  1 - res = source.skipUntilWithTime(new Date(), [scheduler]);
@@ -11463,10 +11463,10 @@
 	      new Recorded(ticks, Notification.createOnNext(value));
 	  },
 	  /**
-	   * Factory method for an OnError notification record at a given time with a given error.
+	   * Factory method for an OnError notification record at a given time with a given errors.
 	   *
-	   * 1 - ReactiveTest.onNext(200, new Error('error'));
-	   * 2 - ReactiveTest.onNext(200, function (e) { return e.message === 'error'; });
+	   * 1 - ReactiveTest.onNext(200, new Error('errors'));
+	   * 2 - ReactiveTest.onNext(200, function (e) { return e.message === 'errors'; });
 	   *
 	   * @param ticks Recorded virtual time the OnError notification occurs.
 	   * @param exception Recorded exception stored in the OnError notification.
@@ -12089,7 +12089,7 @@
 
 	  /**
 	   *  Represents the result of an asynchronous operation.
-	   *  The last value before the OnCompleted notification, or the error received through OnError, is sent to all subscribed observers.
+	   *  The last value before the OnCompleted notification, or the errors received through OnError, is sent to all subscribed observers.
 	   */
 	  var AsyncSubject = Rx.AsyncSubject = (function (__super__) {
 	    inherits(AsyncSubject, __super__);
@@ -12158,7 +12158,7 @@
 	        }
 	      },
 	      /**
-	       * Notifies all subscribed observers about the error.
+	       * Notifies all subscribed observers about the errors.
 	       * @param {Mixed} error The Error to send to all observers.
 	       */
 	      onError: function (error) {
@@ -12584,7 +12584,7 @@
 	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
 	            return cachedSetTimeout.call(null, fun, 0);
 	        } catch(e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global errors
 	            return cachedSetTimeout.call(this, fun, 0);
 	        }
 	    }
@@ -12609,7 +12609,7 @@
 	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
 	            return cachedClearTimeout.call(null, marker);
 	        } catch (e){
-	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global errors.
 	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
 	            return cachedClearTimeout.call(this, marker);
 	        }

@@ -3,6 +3,7 @@
  */
 
 import Sandbox from 'core/sandbox';
+import InvalidArgumentsError from 'helpers/errors/invalid-arguments-error';
 
 export default (() => {
 
@@ -27,7 +28,8 @@ export default (() => {
       this[name] = extension;
     }
     else {
-
+      const message = 'first argument must be a string, second argument must be an Object';
+      throw new InvalidArgumentsError('extend', message);
     }
   }
 
@@ -44,7 +46,8 @@ export default (() => {
       }
     }
     else {
-
+      const message = 'first argument must be a string, second argument must be a Function';
+      throw new InvalidArgumentsError('register', message);
     }
   }
 
@@ -65,7 +68,8 @@ export default (() => {
       }
     }
     else {
-
+      const message = 'first argument must be a string';
+      throw new InvalidArgumentsError('start', message);
     }
   }
 
@@ -92,7 +96,8 @@ export default (() => {
       }
     }
     else {
-      
+      const message = 'first argument must be a string';
+      throw new InvalidArgumentsError('stop', message);
     }
   }
 
