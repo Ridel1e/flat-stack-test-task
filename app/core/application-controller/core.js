@@ -92,7 +92,7 @@ export default (() => {
         moduleData[moduleName].instance = null;
       }
       catch (e) {
-
+        console.error(e);
       }
     }
     else {

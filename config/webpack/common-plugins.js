@@ -6,6 +6,6 @@ const webpack = require('webpack');
 
 module.exports = [
   new webpack.DefinePlugin({
-    NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
   })
 ];
