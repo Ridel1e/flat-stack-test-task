@@ -5,7 +5,12 @@
 import 'helpers/globaly-error-handler';
 import ApplicationController from 'core/application-controller';
 
-import testWidget from 'modules/test';
-testWidget(ApplicationController);
+import orderForm from 'modules/order-form';
+orderForm(ApplicationController);
+import orderSummary from 'modules/order-summary';
+orderSummary(ApplicationController);
+import cart from 'modules/cart';
+cart(ApplicationController);
+
 
 ApplicationController.startAll();

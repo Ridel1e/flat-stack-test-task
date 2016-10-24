@@ -11,12 +11,15 @@ const extension = (() => {
   return {
     addEventListener,
     appendElement,
+    appendText,
     createElement,
     find,
+    getAttribute,
     html,
     removeElement,
     removeEventListener,
-    replaceWith
+    replaceWith,
+    setAttribute,
   };
 
   /**
@@ -69,6 +72,17 @@ const extension = (() => {
     }
   }
 
+  function appendText(element, text) {
+    if(element instanceof Jquery && (typeof text === 'string' || typeof text === 'number')) {
+      element.text(text);
+    }
+    else {
+      const message = 'first argument must be a Jquery Object' +
+        'second argument must be a string or a number';
+      throw new InvalidArgumentsError('appendText', message);
+    }
+  }
+
   /**
    * Appends element to specific context
    * @param element
@@ -81,6 +95,34 @@ const extension = (() => {
     else {
       const message = 'first argument must be a Jquery Object or a string, ' +
         'second argument must be a Jquery Object';
+      throw new InvalidArgumentsError('appendElement', message);
+    }
+  }
+
+  /**
+   *
+   * @param element
+   * @param attrName
+   */
+  function getAttribute(element, attrName) {
+    if(element instanceof Jquery && typeof attrName === 'string') {
+      element.attr(attrName);
+    }
+    else {
+      const message = 'first argument must be a Jquery Object' +
+        'second argument must be a string';
+      throw new InvalidArgumentsError('appendElement', message);
+    }
+  }
+
+  function setAttribute(element, attrName, attrValue) {
+    if(element instanceof Jquery && typeof attrName === 'string' && (typeof attrValue === 'string' || typeof attrValue === 'number')) {
+      element.attr(attrName, attrValue);
+    }
+    else {
+      const message = 'first argument must be a Jquery Object' +
+        'second argument must be a string, ' +
+        'third argument must be a string or a number';
       throw new InvalidArgumentsError('appendElement', message);
     }
   }

@@ -11,7 +11,7 @@ const gulp = require('gulp'),
 gulp.task('styles', function () {
   gulp.src('styles/importer.less')
     .pipe(less())
-    .pipe(gulp.dest('./templates'))
+    .pipe(gulp.dest('./public'))
     .pipe(liveReload());
 });
 

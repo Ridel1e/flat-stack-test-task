@@ -23,6 +23,15 @@ class Sandbox {
   }
 
   /**
+   * Appends inner text to element
+   * @param element
+   * @param text
+   */
+  appendText(element, text) {
+    this.ApplicationController.dom.appendText(element, text);
+  }
+  
+  /**
    * Appends element to context. If context is undefined, appends element to own module context.
    * @param element
    * @param context
@@ -60,6 +69,25 @@ class Sandbox {
    */
   addEventListener(element, eventName, callback) {
     this.ApplicationController.dom.addEventListener(element, eventName, callback);    
+  }
+
+  /**
+   * gets specific attribute of element 
+   * @param element
+   * @param attrName
+   */
+  getAttribute(element, attrName) {
+    this.ApplicationController.dom.getAttribute(element, attrName);
+  }
+
+  /**
+   * sets value to specific element attribute
+   * @param element
+   * @param attrName
+   * @param attrValue
+   */
+  setAttribute(element, attrName, attrValue) {
+    this.ApplicationController.dom.setAttribute(element, attrName, attrValue);
   }
 
   /**
