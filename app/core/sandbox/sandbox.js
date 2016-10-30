@@ -16,10 +16,14 @@ class Sandbox {
 
   /**
    * Renders container template
-   * @param template
+   * @param source
+   * @param context
    */
-  renderTemplate(template) {
-    const container = this.ApplicationController.dom.createElement(template);
+  renderTemplate(source, context) {
+    const template = this.ApplicationController.templateEngine.compile(source);
+    const html = template(context);
+
+    const container = this.ApplicationController.dom.createElement(html);
     this.ApplicationController.dom.replaceWith(this.container, container);
     this.container = container;
   }
@@ -130,9 +134,6 @@ class Sandbox {
       this.ApplicationController.eventEmitter
         .subscribe(listeners.eventName, listeners.callback);
     }
-    else {
-      
-    }
   }
 
   /**
@@ -148,9 +149,14 @@ class Sandbox {
       this.ApplicationController.eventEmitter
         .unsubscribe(listeners.eventName, listeners.callback);
     }
-    else {
+  }
 
-    }
+  /**
+   * Returns application state
+   * @returns {*|{}}
+   */
+  getState() {
+    return this.ApplicationController.state.getState();
   }
 }
 

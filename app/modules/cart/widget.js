@@ -7,7 +7,6 @@ import template from './template';
 const WIDGET_NAME = 'basket';
 
 const widget = (sandbox) => {
-  var productCount = 3;
 
   return {
     destroy,
@@ -15,10 +14,13 @@ const widget = (sandbox) => {
   };
 
   function init() {
-    sandbox.renderTemplate(template);
+    const products = sandbox.getState().products;
 
-    const productCounterElement = sandbox.find('.basket__product-counter');
-    sandbox.appendText(productCounterElement, productCount)
+    const context = {
+      productCount: products.length
+    };
+
+    sandbox.renderTemplate(template, context);
   }
 
   function destroy() {

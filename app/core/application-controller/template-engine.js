@@ -18,7 +18,8 @@ const extension = (() => {
       return Handlebars.compile(template)
     }
     else {
-      throw new InvalidArgumentsError('compile', 'First argument must be a string');
+      const message = 'First argument must be a string';
+      throw new InvalidArgumentsError('compile', message);
     }
   }
 
@@ -27,8 +28,9 @@ const extension = (() => {
       return template(context);
     }
     else {
-      throw new InvalidArgumentsError('render', 'First argument must be a Function, ' +
-        'second argument must be an Object');
+      const message = 'First argument must be a Function, ' +
+        'second argument must be an Object';
+      throw new InvalidArgumentsError('render', message);
     }
   }
 })();

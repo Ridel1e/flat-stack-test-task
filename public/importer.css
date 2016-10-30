@@ -121,6 +121,7 @@
   font-size: 16px;
 }
 .order-summary__edit-order-link {
+  align-self: flex-start;
   color: #979797;
   font-size: 12px;
 }
@@ -241,6 +242,7 @@
   align-self: flex-start;
   color: #777879;
   font-size: 12px;
+  margin-left: auto;
 }
 .basket {
   margin-left: auto;

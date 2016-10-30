@@ -13,4 +13,7 @@ eventEmitter(Core);
 import templateEngine from './template-engine';
 templateEngine(Core);
 
+import state from './state';
+state(Core);
+
 export default Core;

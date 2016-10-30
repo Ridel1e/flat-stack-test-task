@@ -4,8 +4,8 @@
 
 export default [
   '<div class="basket">',
-    '<div class="basket__title">cart</div>',
+    '<span class="basket__title">cart</span>',
     '<div class="basket__icon"></div>',
-    '<div class="basket__product-counter"></div>',
+    '<span class="basket__product-counter">{{ productCount }}</span>',
   '</div>'
 ].join('');
