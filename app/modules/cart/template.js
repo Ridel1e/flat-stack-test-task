@@ -3,7 +3,9 @@
  */
 
 export default [
-  '<div class="basket__title">cart</div>',
-  '<div class="basket__icon"></div>',
-  '<div class="basket__product-counter"></div>'
+  '<div class="basket">',
+    '<div class="basket__title">cart</div>',
+    '<div class="basket__icon"></div>',
+    '<div class="basket__product-counter"></div>',
+  '</div>'
 ].join('');

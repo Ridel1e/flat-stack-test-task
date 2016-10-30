@@ -10,4 +10,7 @@ dom(Core);
 import eventEmitter from './event-emitter';
 eventEmitter(Core);
 
+import templateEngine from './template-engine';
+templateEngine(Core);
+
 export default Core;

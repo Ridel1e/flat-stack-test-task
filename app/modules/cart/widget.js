@@ -19,7 +19,7 @@ const widget = (sandbox) => {
 
     const productCounterElement = sandbox.find('.basket__product-counter');
     sandbox.appendText(productCounterElement, productCount)
-  };
+  }
 
   function destroy() {
 

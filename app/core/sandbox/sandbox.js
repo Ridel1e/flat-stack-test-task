@@ -19,7 +19,9 @@ class Sandbox {
    * @param template
    */
   renderTemplate(template) {
-    this.ApplicationController.dom.html(this.container, template);
+    const container = this.ApplicationController.dom.createElement(template);
+    this.ApplicationController.dom.replaceWith(this.container, container);
+    this.container = container;
   }
 
   /**
